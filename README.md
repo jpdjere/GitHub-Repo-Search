@@ -1,4 +1,4 @@
-# Express + React Starter Template Project
+# Travel Audience Homework Test
 
 An Express + React starter boilerplate, based on Express Generator and Facebook Incubators' Create-React-App.
 
@@ -6,7 +6,7 @@ Express server runs on `port: 3001` and React Frontend on `port: 3000`.
 
 The React Frontend, created using [`create-react-app`](https://github.com/facebook/create-react-app), is found inside the `client` directory.
 
-## Added libraries
+## Libraries inherited from Express + React Starter Template Project
 
 ### Node/Express Backend
 
