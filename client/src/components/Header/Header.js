@@ -3,12 +3,7 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-};
+import FA from "react-fontawesome";
 
 const Header = () => {
 
@@ -17,6 +12,10 @@ const Header = () => {
       <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="title" color="inherit">
+            <FA
+              name="github"
+              className="card__fa"
+              style={{marginRight:"15px"}}/>
             Github Code Search
           </Typography>
         </Toolbar>
@@ -25,4 +24,4 @@ const Header = () => {
   );
 }
 
-export default withStyles(styles)(Header);
+export default Header;

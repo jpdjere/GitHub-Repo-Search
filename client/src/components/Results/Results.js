@@ -33,6 +33,7 @@ const Results = props => {
                 stars={repo.stargazers_count}
                 issues={repo.open_issues}
                 url={repo.html_url}
+                id={repo.id}
               />
             )
 

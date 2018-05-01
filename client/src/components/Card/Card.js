@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 import "./Card.css";
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
@@ -17,7 +18,7 @@ let renderDescription = text => {
 }
 
 const CardComponent = props => {
-  const { classes, fullName, description,language, stars, issues, url } = props;
+  const { classes, fullName, description,language, stars, issues, url, id } = props;
   return (
 
       <Card className="card">
@@ -45,11 +46,11 @@ const CardComponent = props => {
                 <FA name="github" className="card__fa" />See on Github
               </Button>
             </a>
-            <a className="card__link" href={url} target="_blank">
+            <Link className="card__link" to={`/top/${id}`} target="_blank">
               <Button className="card__button" size="small">
                 <FA name="rocket" className="card__fa" /> TOP CONTRIBUTORS
               </Button>
-            </a>
+            </Link>
           </CardActions>
         </CardContent>
       </Card>
