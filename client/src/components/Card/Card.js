@@ -46,7 +46,7 @@ const CardComponent = props => {
                 <FA name="github" className="card__fa" />See on Github
               </Button>
             </a>
-            <Link className="card__link" to={`/top/${id}`} target="_blank">
+            <Link className="card__link" to={`/top/${id}`}>
               <Button className="card__button" size="small">
                 <FA name="rocket" className="card__fa" /> TOP CONTRIBUTORS
               </Button>

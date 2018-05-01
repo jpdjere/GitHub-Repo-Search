@@ -1,0 +1,41 @@
+.contributor__card {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom:10px;
+  min-width:350px;
+}
+.contributor__details {
+  display: flex;
+  flex-direction: column;
+}
+.contributor__content {
+  flex: 1 0 auto;
+}
+.contributor__cover {
+  width: 151px;
+  height: 151px;
+}
+.contributor__controls {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+.contributor__playIcon {
+  height: 38px;
+  width: 38px;
+}
+
+.contributor_fa {
+  margin-right:4px;
+  color:black;
+}
+
+.contributor_link {
+
+}
+
+
+@media (max-width: 600px) {
+
+}

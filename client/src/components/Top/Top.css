@@ -1,5 +1,13 @@
-.top {
+.top__container {
+  margin-top:50px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
+.top__contributor {
+  min-width: 200px;
 }
 
 @media (max-width: 600px) {

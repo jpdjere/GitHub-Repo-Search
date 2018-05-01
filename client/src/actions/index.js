@@ -16,5 +16,6 @@ export const getTopContrib = (owner,repo) => async (dispatch) => {
     owner,
     repo
   });
+  console.log(response);
   dispatch({type:GET_TOP_CONTRIB, payload:response.data.result.data})
 }
