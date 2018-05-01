@@ -18,10 +18,9 @@ const validate = values => {
 
 const SearchBar = props => {
 
-  const { handleSubmit, pristine, reset, submitting, touched} = props
-  console.log(touched);
+  const { handleSubmit, pristine, reset, submitting} = props
   return (
-    <form onSubmit={handleSubmit(values => console.log(values))}>
+    <form onSubmit={handleSubmit(values => props.submitSearch(values.searchTerm))}>
       <div className="searchbar__container">
 
           <Field
@@ -46,4 +45,4 @@ let form = reduxForm({
   validate
 })(SearchBar);
 
-export default connect(null,{})(form);
+export default connect(null,{submitSearch})(form);
