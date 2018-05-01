@@ -1,0 +1,16 @@
+.results__container {
+  display: flex;
+  justify-content: center;
+  margin-top:50px;
+}
+.results__image {
+  height:300px;
+  width:auto;
+}
+
+@media (max-width: 600px) {
+  .results__image {
+    height:150px;
+    width:auto;
+  }
+}
