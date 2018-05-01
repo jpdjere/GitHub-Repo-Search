@@ -1,11 +1,18 @@
 .results__container {
   display: flex;
   justify-content: center;
-  margin-top:50px;
+  margin-top:80px;
 }
 .results__image {
   height:300px;
   width:auto;
+}
+
+.results__cardContainer {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-between;
 }
 
 @media (max-width: 600px) {

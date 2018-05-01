@@ -1,7 +1,8 @@
 import React from "react";
 import { withStyles } from 'material-ui/styles';
-import Rocket from './rocketship.png';
 import './Results.css'
+import Card from '../Card/Card.js'
+import Rocket from './rocketship.png';
 
 const styles = {
   root: {
@@ -14,6 +15,15 @@ const Results = () => {
   return (
     <div className="results__container">
       <img className="results__image" src={Rocket} alt="Results"/>
+      <div className="results__cardContainer">
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+
+      </div>
     </div>
   );
 }

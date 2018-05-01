@@ -7,5 +7,5 @@ export const submitSearch = search => async (dispatch) => {
   let response = await axios.post('/searchRepos',{
     search
   });
-  dispatch({type:SUBMIT_SEARCH, payload:response.data})
+  dispatch({type:SUBMIT_SEARCH, payload:response.data.result.data})
 }
