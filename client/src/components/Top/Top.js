@@ -39,6 +39,7 @@ class Top extends Component {
   render(){
     return (
       <div className="top__container">
+        <h1>Top Contributors</h1>
         {this.props.contributors &&
           this.props.contributors.slice(0,this.state.limit).map((contrib,i) => {
             return (
