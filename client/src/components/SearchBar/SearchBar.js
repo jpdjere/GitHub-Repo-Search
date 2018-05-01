@@ -4,6 +4,7 @@ import './SearchBar.css';
 import { connect } from "react-redux";
 import { submitSearch } from "../../actions"
 import { Field, reduxForm } from 'redux-form';
+import FA from "react-fontawesome";
 
 const validate = values => {
   const errors = {}
@@ -27,11 +28,12 @@ const SearchBar = props => {
             component="input"
             type="text"
             name="searchTerm"
-            className="searchTerm"
+            className="searchbar__searchTerm"
             placeholder="What are you looking for?"
           />
-          <button type="submit" className="searchButton">
+          <button type="submit" className="searchbar__searchButton">
             SEARCH
+            <FA className="searchbar__FA" name="search" />
           </button>
 
       </div>

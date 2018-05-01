@@ -19,7 +19,7 @@ let renderDescription = text => {
 const CardComponent = props => {
   const { classes, fullName, description,language, stars, issues, url } = props;
   return (
-    <div>
+
       <Card className="card">
         <CardContent className="card__content">
           <div className="card__titles">
@@ -27,7 +27,7 @@ const CardComponent = props => {
               <FA name="star" className="card__fa" /> {stars} stars
             </Typography>
             <Typography className="card__title" color="textSecondary">
-              <FA name="exclamation-circle" className="card__fa" /> {stars} issues
+              <FA name="exclamation-circle" className="card__fa" /> {issues} issues
             </Typography>
           </div>
           <Typography variant="headline" component="h2">
@@ -53,7 +53,7 @@ const CardComponent = props => {
           </CardActions>
         </CardContent>
       </Card>
-    </div>
+
   );
 }
 

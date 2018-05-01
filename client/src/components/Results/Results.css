@@ -20,4 +20,7 @@
     height:150px;
     width:auto;
   }
+  .results__cardContainer {
+    width:90%;
+  }
 }
