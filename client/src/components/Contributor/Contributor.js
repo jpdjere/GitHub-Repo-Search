@@ -1,11 +1,8 @@
 import React from "react";
 import "./Contributor.css";
-import Emoji from 'react-emoji-render';
-import { Link } from 'react-router-dom'
 import FA from "react-fontawesome";
 
 import Card, { CardContent, CardMedia } from 'material-ui/Card';
-import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 

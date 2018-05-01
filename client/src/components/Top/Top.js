@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import { getTopContrib } from "../../actions";
 import './Top.css'
 import Button from 'material-ui/Button';
-import Contributor from '../Contributor/Contributor.js'
+import Contributor from '../Contributor/Contributor.js';
+import { Link } from 'react-router-dom'
+import FA from "react-fontawesome";
 
 
 class Top extends Component {
@@ -28,18 +30,22 @@ class Top extends Component {
   }
 
   componentDidMount(state, props){
-    const { id } = this.props.match.params;
-    let repo = this.props.repos.items.find(repo => {
-      return repo.id === parseInt(id);
-    })
-    let {name, owner: {login}} = repo;
-    this.props.getTopContrib(login, name);
+    const { owner, repo } = this.props.match.params;
+    this.props.getTopContrib(owner, repo);
+
+
   };
 
   render(){
     return (
+
       <div className="top__container">
-        <h1>Top Contributors</h1>
+        <div className="top__title">
+          <Link to="/">
+            <FA name="arrow-left" className="top_fa" />
+          </Link>
+          <h1>Top Contributors</h1>
+        </div>
         {this.props.contributors &&
           this.props.contributors.slice(0,this.state.limit).map((contrib,i) => {
             return (

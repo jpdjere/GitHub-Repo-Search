@@ -1,5 +1,4 @@
 import React from "react";
-import { withStyles } from 'material-ui/styles';
 import './SearchBar.css';
 import { connect } from "react-redux";
 import { submitSearch } from "../../actions"
@@ -13,13 +12,12 @@ const validate = values => {
   } else if (values.searchTerm.length < 3) {
     errors.searchTerm = 'Must be 15 characters or less'
   }
-  console.log(errors);
   return errors
 }
 
 const SearchBar = props => {
 
-  const { handleSubmit, pristine, reset, submitting} = props
+  const { handleSubmit} = props
   return (
     <form onSubmit={handleSubmit(values => props.submitSearch(values.searchTerm))}>
       <div className="searchbar__container">
