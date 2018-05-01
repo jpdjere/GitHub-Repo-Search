@@ -6,10 +6,10 @@
   justify-content: center;
 }
 
-.top__contributor {
-  min-width: 200px;
+.top__button {
+  margin:30px 0px !important;
+  background-color: #dedee8 !important;
 }
-
 @media (max-width: 600px) {
 
 }

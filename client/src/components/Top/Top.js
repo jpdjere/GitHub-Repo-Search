@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { connect } from "react-redux";
 import { getTopContrib } from "../../actions";
 import './Top.css'
+import Button from 'material-ui/Button';
 import Contributor from '../Contributor/Contributor.js'
 
 
@@ -11,7 +12,20 @@ class Top extends Component {
     this.state = {
       limit:10
     }
+    this.handleClick = this.handleClick.bind(this);
   };
+
+  handleClick(){
+    this.setState((prevState, props) => ({
+      limit: prevState.limit + 10
+    }));
+  }
+
+  renderButton(){
+    if(!this.props.contributors) return;
+    if(this.props.contributors.length <= this.state.limit) return;
+    return <Button className="top__button" onClick={() => this.handleClick()}>Load more...</Button>
+  }
 
   componentDidMount(state, props){
     const { id } = this.props.match.params;
@@ -41,6 +55,7 @@ class Top extends Component {
             )
           })
         }
+        {this.renderButton()}
 
       </div>
     );

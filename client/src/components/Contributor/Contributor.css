@@ -21,9 +21,8 @@
   padding-left: 10px;
   padding-bottom: 10px;
 }
-.contributor__playIcon {
-  height: 38px;
-  width: 38px;
+.contributor__gh {
+  text-decoration: none;
 }
 
 .contributor_fa {

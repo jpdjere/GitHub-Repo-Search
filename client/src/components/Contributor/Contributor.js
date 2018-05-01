@@ -1,6 +1,7 @@
 import React from "react";
 import "./Contributor.css";
 import Emoji from 'react-emoji-render';
+import { Link } from 'react-router-dom'
 import FA from "react-fontawesome";
 
 import Card, { CardContent, CardMedia } from 'material-ui/Card';
@@ -23,9 +24,12 @@ const Contributor = props => {
             </Typography>
           </CardContent>
           <div className="contributor__controls">
-            <IconButton aria-label="Previous">
-              <FA name="github" className="contributor_fa" />
-            </IconButton>
+            <a href={url} target="_blank" className="contributor__gh">
+              <IconButton aria-label="Github">
+                <FA name="github" className="contributor_fa" />
+              </IconButton>
+
+            </a>
 
           </div>
         </div>
