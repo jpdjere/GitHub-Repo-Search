@@ -1,56 +1,60 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import "./Card.css";
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
+import Emoji from 'react-emoji-render';
+import FA from "react-fontawesome";
 
-const styles = {
-  card: {
-    minWidth: 400,
-    marginBottom:50
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    marginBottom: 16,
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-};
+let renderDescription = text => {
+  if(text.length > 150){
+    return (
+      <Emoji text={text.slice(0,150)+ " ..."} />
+    )
+  }
+  return <Emoji text={text} />
+}
 
 const CardComponent = props => {
-  const { classes } = props;
-  const bull = <span className={classes.bullet}>•</span>;
+  const { classes, fullName, description,language, stars, issues, url } = props;
   return (
     <div>
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography className={classes.title} color="textSecondary">
-            Word of the Day
-          </Typography>
+      <Card className="card">
+        <CardContent className="card__content">
+          <div className="card__titles">
+            <Typography className="card__title" color="textSecondary">
+              <FA name="star" className="card__fa" /> {stars} stars
+            </Typography>
+            <Typography className="card__title" color="textSecondary">
+              <FA name="exclamation-circle" className="card__fa" /> {stars} issues
+            </Typography>
+          </div>
           <Typography variant="headline" component="h2">
-            be{bull}nev{bull}o{bull}lent
+            {fullName}
           </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
+          <Typography className="card__pos" color="textSecondary">
+            {language}
           </Typography>
           <Typography component="p">
-            well meaning and kindly.<br />
-            {'"a benevolent smile"'}
+            {description && renderDescription(description)}
           </Typography>
+          <CardActions className="card__action">
+            <a className="card__link" href={url} target="_blank">
+              <Button className="card__button" size="small">
+                <FA name="github" className="card__fa" />See on Github
+              </Button>
+            </a>
+            <a className="card__link" href={url} target="_blank">
+              <Button className="card__button" size="small">
+                <FA name="rocket" className="card__fa" /> TOP CONTRIBUTORS
+              </Button>
+            </a>
+          </CardActions>
         </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
       </Card>
     </div>
   );
 }
 
-export default withStyles(styles)(CardComponent);
+export default CardComponent;

@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { withStyles } from 'material-ui/styles';
 import './Results.css'
 import Card from '../Card/Card.js'
@@ -10,22 +11,45 @@ const styles = {
   },
 };
 
-const Results = () => {
+const Results = props => {
 
   return (
     <div className="results__container">
-      <img className="results__image" src={Rocket} alt="Results"/>
-      <div className="results__cardContainer">
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+      {
+        !props.repos &&
+        <img className="results__image" src={Rocket} alt="Results"/>
+      }
+      {
+        props.repos &&
+        <div className="results__cardContainer">
+          {props.repos.items.sort((a,b) => {
+            return b.stargazers_count - a.stargazers_count
+          }).slice(0,6).map(repo => {
+            return (
+              <Card
+                fullName={repo.full_name}
+                description={repo.description}
+                language={repo.language}
+                stars={repo.stargazers_count}
+                issues={repo.open_issues}
+                url={repo.html_url}
+              />
+            )
 
-      </div>
+          })}
+
+        </div>
+      }
     </div>
   );
 }
 
-export default withStyles(styles)(Results);
+function mapStateToProps(state){
+  return {
+    repos:state.repos
+  }
+}
+
+const ResultsHOC = withStyles(styles)(Results);
+
+export default connect(mapStateToProps, null)(ResultsHOC);
