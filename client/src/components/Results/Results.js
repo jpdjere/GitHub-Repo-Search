@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withStyles } from 'material-ui/styles';
 import './Results.css'
 import Card from '../Card/Card.js'
 import Rocket from './rocketship.png';
@@ -59,6 +58,5 @@ function mapStateToProps(state){
   }
 }
 
-const ResultsHOC = withStyles(styles)(Results);
 
-export default connect(mapStateToProps, null)(ResultsHOC);
+export default connect(mapStateToProps, null)(Results);
