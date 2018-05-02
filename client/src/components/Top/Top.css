@@ -24,6 +24,16 @@
   background-color: #dedee8 !important;
 }
 
+/*-------- TRANSITIONS-------*/
+.top__contributor {
+  transition: opacity 500ms ease-in-out;
+  opacity: 0;
+}
+.top__contributor--entered {
+  opacity: 1;
+}
+/*-------- TRANSITIONS-------*/
+
 @media (max-width: 600px) {
 
 }

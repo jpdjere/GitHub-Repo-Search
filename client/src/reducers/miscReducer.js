@@ -1,12 +1,12 @@
-import {GET_TOP_CONTRIB, REMOVE_TOP_CONTRIB} from "../actions";
+import {SHOW_LOADER, HIDE_LOADER} from "../actions";
 
 export default function(state = null, action) {
   switch (action.type) {
 
-    case GET_TOP_CONTRIB:
+    case SHOW_LOADER:
       return action.payload;
 
-    case REMOVE_TOP_CONTRIB:
+    case HIDE_LOADER:
       return action.payload;
 
     default:

@@ -36,6 +36,10 @@
   margin-left: 5px;
 }
 
+.searchbar__loader{
+  
+}
+
 @media (max-width: 600px) {
   .searchbar__container {
     flex-wrap: wrap;

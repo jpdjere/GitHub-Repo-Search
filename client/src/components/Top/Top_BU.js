@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import { getTopContrib, removeTopContrib } from "../../actions";
+import { getTopContrib } from "../../actions";
 import './Top.css'
 import Button from 'material-ui/Button';
 import Contributor from '../Contributor/Contributor.js';
@@ -36,10 +36,6 @@ class Top extends Component {
 
   };
 
-  componentWillUnmount(){
-    this.props.removeTopContrib();
-  }
-
   render(){
     return (
 
@@ -61,7 +57,6 @@ class Top extends Component {
                 contributions={contrib.contributions}
                 url={contrib.html_url}
                 avatar={contrib.avatar_url}
-                order={i+1}
 
               />
             )
@@ -82,4 +77,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps, {getTopContrib, removeTopContrib})(Top);
+export default connect(mapStateToProps, {getTopContrib})(Top);

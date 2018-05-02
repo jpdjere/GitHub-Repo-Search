@@ -1,9 +1,10 @@
 import React from "react";
 import './SearchBar.css';
 import { connect } from "react-redux";
-import { submitSearch } from "../../actions"
+import { submitSearch, showLoader} from "../../actions"
 import { Field, reduxForm } from 'redux-form';
 import FA from "react-fontawesome";
+
 
 const validate = values => {
   const errors = {}
@@ -19,8 +20,9 @@ const SearchBar = props => {
 
   const { handleSubmit} = props
   return (
-    <form onSubmit={handleSubmit(values => props.submitSearch(values.searchTerm))}>
-      <div className="searchbar__container">
+    <div>
+      <form onSubmit={handleSubmit(values => props.showLoader() && props.submitSearch(values.searchTerm))}>
+        <div className="searchbar__container">
 
           <Field
             component="input"
@@ -32,12 +34,15 @@ const SearchBar = props => {
           <button type="submit" className="searchbar__searchButton">
             SEARCH
             <FA className="searchbar__FA" name="search" />
+
           </button>
 
-      </div>
-    </form>
+        </div>
+      </form>
+    </div>
   );
 }
+
 
 
 let form = reduxForm({
@@ -45,4 +50,4 @@ let form = reduxForm({
   validate
 })(SearchBar);
 
-export default connect(null,{submitSearch})(form);
+export default connect(null, {submitSearch, showLoader})(form);
