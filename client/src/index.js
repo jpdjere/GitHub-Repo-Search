@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import reducers from "./reducers";
 import {HashRouter, Switch} from 'react-router-dom';
 
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 
 const store = createStore(
   reducers,
@@ -27,4 +27,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'));
 
-registerServiceWorker();
+// registerServiceWorker();

@@ -22,7 +22,7 @@ class Contributor extends React.Component{
 
   render(){
     let {login, contributions, url, avatar, order } = this.props;
-    console.log(order);
+    // console.log(order);
     const duration = 200;
     if(order > 10){
       order = order % 10;
