@@ -10,9 +10,12 @@
 }
 
 .search__image {
-  margin-top:40px;
+  margin-top:130px;
   height:300px;
   width:auto;
+}
+.search__loader {
+  margin-top:30px;
 }
 
 @media (max-width: 600px) {

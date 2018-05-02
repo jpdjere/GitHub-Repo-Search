@@ -11,7 +11,7 @@ const Search = props => {
 
   let renderImageOrLoader = () => {
     if(props.misc && props.misc.loader){
-      return <div><Loader></Loader></div>
+      return <div className="search__loader"><Loader></Loader></div>
     }
     if(!props.repos){
       return <img className="search__image" src={Rocket} alt="Rocket!"/>

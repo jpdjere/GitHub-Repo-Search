@@ -21,6 +21,7 @@ class Results extends Component {
     this.props.getRepos(presentSearch);
   }
 
+  //Props (location) get updated
   componentDidUpdate(prevProps, prevState, snapshot){
     let presentSearch = queryString.parse(this.props.history.location.search).search;
     if(this.state.searchTerm !== presentSearch && presentSearch !== undefined){
