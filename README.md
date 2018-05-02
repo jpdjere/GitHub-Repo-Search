@@ -1,6 +1,6 @@
 # GitHub Repo Search (TA Frontend Assignment)
 
-
+[https://github-repo-search.herokuapp.com/](https://github-repo-search.herokuapp.com/)
 
 A web app for searching Github repos, list them by popularity and list their top contributors. Uses Github Developer API v3.
 
