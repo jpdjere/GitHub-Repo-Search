@@ -41,6 +41,10 @@ class Top extends Component {
     this.props.removeTopContrib();
   }
 
+  renderContributors(){
+
+  }
+
   render(){
     return (
 
@@ -51,7 +55,9 @@ class Top extends Component {
           </Link>
           <h1>Top Contributors</h1>
         </div>
-        {this.props.contributors &&
+        {
+          (this.props.contributors && this.props.contributors.length === 0) ? <p>No contributors</p> : (
+          this.props.contributors &&
           this.props.contributors.slice(0,this.state.limit).map((contrib,i) => {
             return (
 
@@ -66,7 +72,7 @@ class Top extends Component {
 
               />
             )
-          }) || <div style={{marginTop:"70px"}}><Loader></Loader></div>
+          }) || <div style={{marginTop:"70px"}}><Loader></Loader></div>)
         }
         {this.renderButton()}
 

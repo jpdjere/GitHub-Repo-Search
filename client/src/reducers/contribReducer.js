@@ -5,7 +5,7 @@ export default function(state = null, action) {
 
     case GET_TOP_CONTRIB:
       if(!action.payload){
-        return null;
+        return [];
       }
       return action.payload;
 
