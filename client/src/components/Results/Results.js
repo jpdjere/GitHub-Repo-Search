@@ -1,32 +1,46 @@
-import React from "react";
+import React, {Component} from "react";
+import "./Results.css"
+import Card from '../Card/Card.js';
 import { connect } from "react-redux";
-import './Results.css'
-import Card from '../Card/Card.js'
-import Rocket from './rocketship.png';
-import SearchBar from "../../components/SearchBar/SearchBar.js";
-import Loader from "../../components/Loader/Loader.js";
-import { submitSearch } from "../../actions"
+import { getRepos } from "../../actions";
+import { withRouter } from 'react-router';
+import queryString from 'query-string';
 
-const Results = props => {
+class Results extends Component {
 
-  let renderImageOrLoader = () => {
-    if(props.misc && props.misc.loader){
-      return <div><Loader></Loader></div>
-    }
-    if(!props.repos){
-      return <img className="results__image" src={Rocket} alt="Results"/>
-    }
+  constructor(props){
+    super(props)
   }
 
-  return (
-    <div>
-      <SearchBar></SearchBar>
+  componentDidMount(){
+    let presentSearch = queryString.parse(this.props.history.location.search).search;
+    this.setState({
+      searchTerm:presentSearch
+    })
+    if(!presentSearch) return;
+    this.props.getRepos(presentSearch);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot){
+    let presentSearch = queryString.parse(this.props.history.location.search).search;
+    if(this.state.searchTerm !== presentSearch && presentSearch !== undefined){
+      this.setState({
+        searchTerm:presentSearch
+      })
+      this.props.getRepos(presentSearch);
+    }
+
+  }
+
+  render(){
+
+    return(
       <div className="results__container">
-        {renderImageOrLoader()}
+
         {
-          props.repos &&
+          this.props.repos &&
           <div className="results__cardContainer">
-            {props.repos.items.sort((a,b) => {
+            {this.props.repos.items.sort((a,b) => {
               return b.stargazers_count - a.stargazers_count
             }).slice(0,6).map(repo => {
               let {name, owner: {login}} = repo;
@@ -50,8 +64,9 @@ const Results = props => {
           </div>
         }
       </div>
-    </div>
-  );
+    )
+  }
+
 }
 
 function mapStateToProps(state){
@@ -61,4 +76,5 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps, null)(Results);
+let reduxHOC = connect(mapStateToProps, {getRepos})(Results);
+export default withRouter(reduxHOC);

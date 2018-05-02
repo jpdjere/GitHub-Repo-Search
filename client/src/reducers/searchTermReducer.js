@@ -1,9 +1,9 @@
-import {GET_REPOS} from "../actions";
+import {SUBMIT_SEARCH} from "../actions";
 
 export default function(state = null, action) {
   switch (action.type) {
 
-    case GET_REPOS:
+    case SUBMIT_SEARCH:
       return action.payload;
 
     default:

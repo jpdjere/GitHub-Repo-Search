@@ -1,17 +1,9 @@
-.results__loader {
-  display: flex;
-  justify-content: center;
-}
 .results__container {
   display: flex;
   justify-content: center;
   margin-top:80px;
 }
-.results__image {
-  margin-top:40px;
-  height:300px;
-  width:auto;
-}
+
 
 .results__cardContainer {
   display:flex;

@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const octokit = require('@octokit/rest')()
 
+router.get('/searchRepos', async (req,res,next) => {
+  let {search} = req.query;
+  const result = await octokit.search.repos({q:search,sorts:"stars",order:"desc"})
+  res.send({result})
+})
+
 router.post('/searchRepos', async (req,res,next) => {
   let {search} = req.body;
   const result = await octokit.search.repos({q:search,sorts:"stars",order:"desc"})

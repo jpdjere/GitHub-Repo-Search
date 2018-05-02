@@ -1,0 +1,23 @@
+.search__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__searchBarContainer {
+  width:100%
+}
+
+.search__image {
+  margin-top:40px;
+  height:300px;
+  width:auto;
+}
+
+@media (max-width: 600px) {
+  .search__image {
+    height:150px;
+    width:auto;
+  }
+}

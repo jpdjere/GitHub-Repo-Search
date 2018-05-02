@@ -1,12 +1,14 @@
 import axios from "axios";
 
 export const SUBMIT_SEARCH = "submit_search";
-export const SEARCHING = "searching";
 export const submitSearch = search => async (dispatch) => {
-  let response = await axios.post('/searchRepos',{
-    search
-  });
-  dispatch({type:SUBMIT_SEARCH, payload:response.data.result.data})
+  dispatch({type:SUBMIT_SEARCH, payload:search})
+}
+
+export const GET_REPOS = "get_repos";
+export const getRepos = search => async (dispatch) => {
+  let response = await axios.get(`/searchRepos?search=${search}`);
+  dispatch({type:GET_REPOS, payload:response.data.result.data})
   dispatch({type:HIDE_LOADER, payload:{loader:false}})
 }
 
