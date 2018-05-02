@@ -5,6 +5,7 @@ import './Top.css'
 import Button from 'material-ui/Button';
 import Contributor from '../Contributor/Contributor.js';
 import { Link } from 'react-router-dom'
+import Loader from "../../components/Loader/Loader.js";
 import FA from "react-fontawesome";
 
 
@@ -19,7 +20,7 @@ class Top extends Component {
 
   handleClick(){
     this.setState((prevState, props) => ({
-      limit: prevState.limit + 10
+      limit: prevState.limit + 5
     }));
   }
 
@@ -65,7 +66,7 @@ class Top extends Component {
 
               />
             )
-          })
+          }) || <div style={{marginTop:"70px"}}><Loader></Loader></div>
         }
         {this.renderButton()}
 
