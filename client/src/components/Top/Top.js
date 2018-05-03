@@ -13,36 +13,78 @@ class Top extends Component {
   constructor(props){
     super(props)
     this.state = {
-      limit:10
+      viewLimit:10,
+      page:1,
+      pageLength:30
     }
     this.handleClick = this.handleClick.bind(this);
   };
 
   handleClick(){
-    this.setState((prevState, props) => ({
-      limit: prevState.limit + 5
-    }));
+    console.log("\n\n");
+    console.log("Current state: ",this.state);
+    if(this.state.viewLimit % this.state.pageLength !== 0){
+      console.log("LESS");
+      this.setState((prevState, props) => {
+        console.log("\n\n\n",1);
+        return { viewLimit: prevState.viewLimit + 5 }
+      })
+    }else{
+      console.log("FIN");
+      this.setState((prevState, props) => {
+        console.log("\n\n\n",2);
+        return(
+          {
+            viewLimit: prevState.viewLimit + 5,
+            page: prevState.page + 1,
+            culo:"teta"
+          }
+        )
+      })
+    }
+
+      // this.props.getTopContrib(owner, repo, page + 1)
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot){
+
+    console.log("PREV",prevState);
+    console.log("NEW",this.state);
+    if(this.state.viewLimit % this.state.pageLength === 0){
+      //Estoy en un multiiplo de 30, pido más data
+      const { owner, repo } = this.props.match.params;
+      const { page } = this.state;
+      this.setState((prevState, props) => {
+        console.log("\n\n\n",3);
+        return(
+          {
+            viewLimit: prevState.viewLimit + 5,
+            page: prevState.page + 1
+          }
+        )
+      })
+      this.props.getTopContrib(owner, repo, page + 1);
+    }
+
   }
 
   renderButton(){
     if(!this.props.contributors) return;
-    if(this.props.contributors.length <= this.state.limit) return;
+    // if(this.props.contributors.length < this.state.viewLimit){
+    //   return;
+    // }
     return <Button className="top__button" onClick={() => this.handleClick()}>Load more...</Button>
   }
 
   componentDidMount(state, props){
     const { owner, repo } = this.props.match.params;
-    this.props.getTopContrib(owner, repo);
-
-
+    const { page } = this.state;
+    this.props.getTopContrib(owner, repo, page);
+    console.log(state, props);
   };
 
   componentWillUnmount(){
     this.props.removeTopContrib();
-  }
-
-  renderContributors(){
-
   }
 
   render(){
@@ -58,7 +100,7 @@ class Top extends Component {
         {
           (this.props.contributors && this.props.contributors.length === 0) ? <p>No contributors</p> : (
           this.props.contributors &&
-          this.props.contributors.slice(0,this.state.limit).map((contrib,i) => {
+          this.props.contributors.slice(0,this.state.viewLimit).map((contrib,i) => {
             return (
 
               <Contributor

@@ -6,6 +6,8 @@ export default function(state = null, action) {
     case GET_TOP_CONTRIB:
       if(!action.payload){
         return [];
+      }else if(state && state.length > 1){
+        return state.concat(action.payload)
       }
       return action.payload;
 

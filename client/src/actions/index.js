@@ -14,12 +14,15 @@ export const getRepos = search => async (dispatch) => {
 
 /* ------------------- TOP CONTRIBS ---------------------- */
 export const GET_TOP_CONTRIB = "get_top_contrib";
-export const getTopContrib = (owner,repo) => async (dispatch) => {
-  let response = await axios.post('/getRepoContributors',{
-    owner,
-    repo
-  });
-  dispatch({type:GET_TOP_CONTRIB, payload:response.data.result.data})
+export const getTopContrib = (owner,repo,page) => async (dispatch) => {
+  try {
+    let response = await axios.get(
+      `/getRepoContributors?owner=${owner}&repo=${repo}&page=${page}`
+    );
+    dispatch({type:GET_TOP_CONTRIB, payload:response.data.result.data})
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 export const REMOVE_TOP_CONTRIB = "remove_top_contrib";
