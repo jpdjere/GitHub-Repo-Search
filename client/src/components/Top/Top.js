@@ -21,29 +21,24 @@ class Top extends Component {
   };
 
   handleClick(){
-    console.log("\n\n");
-    console.log("Current state: ",this.state);
+
     if(this.state.viewLimit % this.state.pageLength !== 0){
-      console.log("LESS");
+
       this.setState((prevState, props) => {
-        console.log("\n\n\n",1);
         return { viewLimit: prevState.viewLimit + 5 }
       })
     }
 
-      // this.props.getTopContrib(owner, repo, page + 1)
   }
 
   componentDidUpdate(prevProps, prevState, snapshot){
 
-    console.log("PREV",prevState);
-    console.log("NEW",this.state);
     if(this.state.viewLimit % this.state.pageLength === 0){
-      //Estoy en un multiiplo de 30, pido más data
+      //Estoy en un multiplo de 30, pido más data
       const { owner, repo } = this.props.match.params;
       const { page } = this.state;
       this.setState((prevState, props) => {
-        console.log("\n\n\n",3);
+
         return(
           {
             viewLimit: prevState.viewLimit + 5,
@@ -68,7 +63,6 @@ class Top extends Component {
     const { owner, repo } = this.props.match.params;
     const { page } = this.state;
     this.props.getTopContrib(owner, repo, page);
-    console.log(state, props);
   };
 
   componentWillUnmount(){
@@ -87,7 +81,7 @@ class Top extends Component {
         </div>
         {
           (this.props.contributors && this.props.contributors.length === 0) ? <p>No contributors</p> : (
-          this.props.contributors &&
+          (this.props.contributors &&
           this.props.contributors.slice(0,this.state.viewLimit).map((contrib,i) => {
             return (
 
@@ -102,7 +96,7 @@ class Top extends Component {
 
               />
             )
-          }) || <div style={{marginTop:"70px"}}><Loader></Loader></div>)
+          }) ) || <div style={{marginTop:"70px"}}><Loader></Loader></div>)
         }
         {this.renderButton()}
 

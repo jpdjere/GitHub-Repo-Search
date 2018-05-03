@@ -4,16 +4,12 @@ import Card from '../Card/Card.js';
 import { connect } from "react-redux";
 import { getRepos } from "../../actions";
 import { withRouter } from 'react-router';
-import queryString from 'query-string';
 
 class Results extends Component {
 
-  constructor(props){
-    super(props)
-  }
-
   componentDidMount(){
-    let presentSearch = queryString.parse(this.props.history.location.search).search;
+    let qs = new URLSearchParams(this.props.history.location.search);
+    let presentSearch = qs.get('search');
     this.setState({
       searchTerm:presentSearch
     })
@@ -23,7 +19,8 @@ class Results extends Component {
 
   //Props (location) get updated
   componentDidUpdate(prevProps, prevState, snapshot){
-    let presentSearch = queryString.parse(this.props.history.location.search).search;
+    let qs = new URLSearchParams(this.props.history.location.search);
+    let presentSearch = qs.get('search');
     if(this.state.searchTerm !== presentSearch && presentSearch !== undefined){
       this.setState({
         searchTerm:presentSearch
@@ -32,6 +29,7 @@ class Results extends Component {
     }
 
   }
+
 
   render(){
 

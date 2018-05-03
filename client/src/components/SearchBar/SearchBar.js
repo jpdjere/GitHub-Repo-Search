@@ -1,7 +1,6 @@
 import React from "react";
 import './SearchBar.css';
 import { connect } from "react-redux";
-import { Redirect, Switch } from 'react-router-dom';
 import { submitSearch, showLoader} from "../../actions"
 import { Field, reduxForm } from 'redux-form';
 import FA from "react-fontawesome";

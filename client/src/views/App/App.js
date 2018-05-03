@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import Header from "../../components/Header/Header.js"
 import SearchBar from "../../components/SearchBar/SearchBar.js"
 import Search from "../../components/Search/Search.js"

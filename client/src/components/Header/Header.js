@@ -24,7 +24,7 @@ const Header = () => {
                 Github Code Search
               </Typography>
             </Link>
-            <a href="https://github.com/jpdjere" target="_blank" className="header__title">
+            <a href="https://github.com/jpdjere" target="_blank" rel="noopener noreferrer" className="header__title">
               <FA
                 name="github"
                 className="header__gh"

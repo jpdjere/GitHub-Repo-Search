@@ -4,7 +4,7 @@ const octokit = require('@octokit/rest')()
 
 octokit.authenticate({
   type: 'token',
-  token: '1ed2c27dab8c3ae3df77028f2e76cde6843b1ff1'
+  token: 'fecc3c2ecea274de69d048b884f53a5c38dd3c16'
 })
 
 router.get('/searchRepos', async (req,res,next) => {

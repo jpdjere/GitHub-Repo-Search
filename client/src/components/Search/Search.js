@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import './Search.css';
 import {Route, Switch} from 'react-router-dom';
 import Rocket from './rocketship.png';
-import SearchBar from "../../components/SearchBar/SearchBar.js";
 import Loader from "../../components/Loader/Loader.js";
 import Results from "../../components/Results/Results.js";
 
