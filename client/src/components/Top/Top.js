@@ -29,18 +29,6 @@ class Top extends Component {
         console.log("\n\n\n",1);
         return { viewLimit: prevState.viewLimit + 5 }
       })
-    }else{
-      console.log("FIN");
-      this.setState((prevState, props) => {
-        console.log("\n\n\n",2);
-        return(
-          {
-            viewLimit: prevState.viewLimit + 5,
-            page: prevState.page + 1,
-            culo:"teta"
-          }
-        )
-      })
     }
 
       // this.props.getTopContrib(owner, repo, page + 1)
@@ -70,9 +58,9 @@ class Top extends Component {
 
   renderButton(){
     if(!this.props.contributors) return;
-    // if(this.props.contributors.length < this.state.viewLimit){
-    //   return;
-    // }
+    if(this.props.contributors.length < this.state.viewLimit){
+      return;
+    }
     return <Button className="top__button" onClick={() => this.handleClick()}>Load more...</Button>
   }
 
