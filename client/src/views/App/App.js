@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from "react-redux";
-import { withRouter } from 'react-router';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, HashRouter} from 'react-router-dom';
 import Header from "../../components/Header/Header.js"
 import SearchBar from "../../components/SearchBar/SearchBar.js"
 import Search from "../../components/Search/Search.js"
 import Top from "../../components/Top/Top.js"
 
-class App extends Component {
+export class App extends Component {
 
   render() {
     return (
       <div>
-        <Route path="/" component={Header} />
-        <div className="search__searchBarContainer">
-          <SearchBar></SearchBar>
-        </div>
-        <Switch>
-          <Route path="/" exact name="Search" component={Search}></Route>
-          <Route exact path="/top/:owner/:repo" name="Top Contributors" component={Top}/>
-        </Switch>
+        <HashRouter>
+          <div>
+            Si
+            <Route path="/" component={Header} />
+            <div className="search__searchBarContainer">
+              <SearchBar></SearchBar>
+            </div>
+            <Switch>
+              <Route path="/" exact name="Search" component={Search}></Route>
+              <Route exact path="/top/:owner/:repo" name="Top Contributors" component={Top}/>
+            </Switch>
+
+          </div>
+        </HashRouter>
       </div>
     );
   }
@@ -32,6 +37,4 @@ function mapStateToProps(state){
   })
 }
 
-let reduxHOC =  connect(mapStateToProps,null)(App);
-
-export default withRouter(reduxHOC)
+export default connect(mapStateToProps,null)(App);
