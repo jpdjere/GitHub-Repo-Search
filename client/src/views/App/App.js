@@ -14,7 +14,7 @@ export class App extends Component {
       <div>
         <HashRouter>
           <div>
-            Si
+
             <Route path="/" component={Header} />
             <div className="search__searchBarContainer">
               <SearchBar></SearchBar>

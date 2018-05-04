@@ -3,16 +3,22 @@ import ReactDOM from 'react-dom';
 import {App} from './App';
 import renderer from 'react-test-renderer';
 
-test('Link changes the class when hovered', () => {
-  const component = renderer.create(App);
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-});
+import Enzyme, { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter() })
 
-// it('renders without crashing', () => {
-//   const div = document.createElement('div');
-//   ReactDOM.render(<App />, div);
-// });
+
+describe('App', () => {
+ it('should be defined', () => {
+   expect(App).toBeDefined();
+ });
+ it('should render correctly', () => {
+   const tree = shallow(
+     <App />
+   );
+   expect(tree).toMatchSnapshot();
+ });
+});
 
 it('sums numbers', () => {
   let sum = (a,b) => a + b;
