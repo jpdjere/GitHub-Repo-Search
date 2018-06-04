@@ -15,7 +15,7 @@ const Header = () => {
           <div className="header__dist">
             <Link to="/" className="header__title">
 
-              <Typography variant="title" color="inherit">
+              <Typography variant="title" color="inherit" className="typo">
                 <FA
                   name="code"
                   className="card__fa"

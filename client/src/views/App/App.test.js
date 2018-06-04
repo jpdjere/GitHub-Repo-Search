@@ -1,23 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {App} from './App';
+
 import renderer from 'react-test-renderer';
 
-import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new Adapter() })
-
-
 describe('App', () => {
+
  it('should be defined', () => {
    expect(App).toBeDefined();
  });
- it('should render correctly', () => {
-   const tree = shallow(
-     <App />
-   );
+
+ it('should match the snapshot', () => {
+   // const tree = renderer.create(<App />).toJSON();
+   const tree = shallow(<App />);
    expect(tree).toMatchSnapshot();
  });
+
 });
 
 it('sums numbers', () => {

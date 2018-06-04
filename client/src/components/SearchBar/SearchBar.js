@@ -17,7 +17,7 @@ const validate = values => {
   return errors
 }
 
-class SearchBar extends React.Component {
+export class SearchBar extends React.Component {
   constructor(props){
     super();
     this.submitNavigate = this.submitNavigate.bind(this);
