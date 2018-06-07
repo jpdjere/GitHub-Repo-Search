@@ -33,7 +33,7 @@ export class SearchBar extends React.Component {
   };
 
   render(){
-    const { handleSubmit} = this.props;
+    const { handleSubmit } = this.props;
     return (
       <div>
         <form onSubmit={handleSubmit(values => this.submitNavigate(values))}>
@@ -62,12 +62,12 @@ export class SearchBar extends React.Component {
 
 
 
-let form = reduxForm({
+export let ReduxForm = reduxForm({
   form: 'search',
   validate,
   destroyOnUnmount: true
 })(SearchBar);
 
-let reduxHOC = connect(null, {submitSearch, showLoader})(form);
+export let ReduxHOC = connect(null, {submitSearch, showLoader})(ReduxForm);
 
-export default withRouter(reduxHOC);
+export default withRouter(ReduxHOC);
