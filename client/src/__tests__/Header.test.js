@@ -1,10 +1,10 @@
 import React from "react";
 import Header from '../components/Header/Header';
-import { mount } from "enzyme";
+import { shallow, mount } from "enzyme";
 import { Router } from "react-router";
 import { createMemoryHistory } from 'history';
 import FA from "react-fontawesome";
-
+import Typography from 'material-ui/Typography';
 
 describe('Header',() => {
   let wrapped;
@@ -14,6 +14,21 @@ describe('Header',() => {
         <Header/>
       </Router>
     );
+  });
+
+  it('should have title of Github Code Search',() => {
+    const wrapper = shallow(
+          <Router history={createMemoryHistory()}>
+            <Header/>
+          </Router>
+    );
+    console.log(wrapper.debug());
+    console.log(wrapped.debug());
+    console.log(wrapped.find(Typography).debug());
+    // expect(wrapped.find(Typography)).to.have.prop(
+    //   'children',
+    //   'See list of all projects'
+    // );
   })
 
   it('should have a Github logo linking to the repo',() => {
@@ -32,7 +47,7 @@ describe('Header',() => {
   })
 
   afterEach(() => {
-
+    wrapped.unmount();
   })
 
 })

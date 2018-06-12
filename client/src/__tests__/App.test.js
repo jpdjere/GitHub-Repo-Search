@@ -31,10 +31,8 @@ describe('App', () => {
     expect(searchBarAmount).toEqual(1);
   })
 
- // it('should match the snapshot', () => {
- //   // const tree = renderer.create(<App />).toJSON();
- //   const tree = shallow(<App />);
- //   expect(tree).toMatchSnapshot();
- // });
+  afterEach(() => {
+    wrapped.unmount();
+  })
 
 });
