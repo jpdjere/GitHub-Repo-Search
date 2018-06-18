@@ -62,12 +62,12 @@ export class SearchBar extends React.Component {
 
 
 
-export let ReduxForm = reduxForm({
+export const ReduxForm = reduxForm({
   form: 'search',
   validate,
   destroyOnUnmount: true
 })(SearchBar);
 
-export let ReduxHOC = connect(null, {submitSearch, showLoader})(ReduxForm);
+export const ReduxHOC = connect(null, {submitSearch, showLoader})(ReduxForm);
 
 export default withRouter(ReduxHOC);
