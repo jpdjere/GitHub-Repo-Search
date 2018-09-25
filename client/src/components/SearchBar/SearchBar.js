@@ -20,6 +20,9 @@ const validate = values => {
 export class SearchBar extends React.Component {
   constructor(props){
     super();
+    this.state = {
+      test: false
+    }
     this.submitNavigate = this.submitNavigate.bind(this);
   }
 
@@ -29,6 +32,9 @@ export class SearchBar extends React.Component {
     this.props.history.push({
       pathname: '/',
       search: '?search='+values.searchTerm
+    });
+    this.setState({
+      test:values.searchTerm
     })
   };
 
@@ -54,6 +60,7 @@ export class SearchBar extends React.Component {
 
           </div>
         </form>
+        <span style={{display:"none"}} id="test">{this.state.test}</span>
       </div>
     );
 

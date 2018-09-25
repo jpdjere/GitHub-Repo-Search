@@ -22,9 +22,7 @@ describe('Header',() => {
             <Header/>
           </Router>
     );
-    console.log(wrapper.debug());
-    console.log(wrapped.debug());
-    console.log(wrapped.find(Typography).debug());
+
     // expect(wrapped.find(Typography)).to.have.prop(
     //   'children',
     //   'See list of all projects'
